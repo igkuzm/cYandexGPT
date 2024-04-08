@@ -66,8 +66,7 @@ int ini_parse(
 		first=1,                     // boolean - if char is first in line
 		match=0,                     // boolean - if found key/value pair
 		need_new_line=0,             // boolean - skip to new line
-		comment=0,                   // boolean - if line starts with '#'
-		section=0,                 // boolean - if line starts with '['
+		section=0,                   // boolean - if line starts with '['
 		b_s=0,                       // boolean - if start '''
 		bb_s=0;                      // boolean - if start '''
 
@@ -162,7 +161,6 @@ int ini_parse(
 			vlen = 0;
 			// init values
 			match = 0;
-			comment = 0;
 			first = 1;
 			continue;
 		}
