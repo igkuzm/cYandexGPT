@@ -7,14 +7,14 @@ EXECUTABLE=yandex_gpt
 
 all: $(SOURCES) $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS) $(SOURCES)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
 *.o:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm $(EXECUTABLE)
 	rm $(OBJECTS)
+	rm $(EXECUTABLE)
 
 .phony: clean

@@ -32,6 +32,8 @@
 #include "cJSON.h"
 #include "cYandexGPT.h"
 
+#define TEMPERATURE 1
+
 struct string {
 	char *ptr;
 	size_t len;
@@ -191,7 +193,7 @@ _c_yandex_gpt_make_request(
 	// add options
 	cJSON *completionOptions = cJSON_CreateObject();
 	cJSON_AddFalseToObject(completionOptions, "stream");
-	cJSON_AddNumberToObject(completionOptions, "temperature", 0.6);
+	cJSON_AddNumberToObject(completionOptions, "temperature", TEMPERATURE);
 	cJSON_AddStringToObject(completionOptions, "maxTokens", "2000");
 	cJSON_AddItemToObject(json, "completionOptions", completionOptions);
 	
