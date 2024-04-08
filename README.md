@@ -2,7 +2,7 @@
 
 You need to get Yandex API key and directory id first
 
-How to do this you may read: [](https://habr.com/ru/articles/780008)
+How to do this you may read: [this](https://habr.com/ru/articles/780008)
 
 ### Program example
 ```
