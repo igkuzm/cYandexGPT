@@ -4,18 +4,40 @@
 #include <string.h>
 #include "ini.h"
 
-int main(int argc, char *argv[])
-{
-	if (argc < 2){
-		printf(
+static int show_help(char *argv[]){
+	printf(
 				"As Yndex GPT for someting...\n"
 				"set C_YANDEX_GPT_ID and C_YNDEX_GPT_API_KEY "
 				"as ENV or in ~/.cYandexGPT.conf\n"
 				"\n"
-				"usage: %s [options] \"TEXT\"\n"
+				"usage: %s [options] [\"TEXT\"]\n"
+				"  -h  --help\tshow this message and exit\n"
 				"  -s  --summary\tsummarize the text\n"
-				"  if TEXT is '-'\tuse stdin\n", argv[0]);
-		return 0;
+				, argv[0]);
+	return 0;
+}
+
+int main(int argc, char *argv[])
+{
+	// check options
+	int summary = 0;
+	char *text = argv[1];
+	
+	if (text){
+		if (
+				strcmp(text, "-h") == 0 ||
+				strcmp(text, "--help") == 0
+				)
+			return show_help(argv);
+		
+		if (
+				strcmp(text, "-s") == 0 ||
+				strcmp(text, "--summary") == 0
+				)
+		{
+			text = argv[2];
+			summary = 1;
+		}
 	}
 
 	const char *id = getenv("C_YANDEX_GPT_ID");
@@ -43,20 +65,10 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	// check options
-	int summary = 0;
-	char *text = argv[1];
-	if (
-			strcmp(text, "-s") == 0 ||
-			strcmp(text, "--summary") == 0
-			)
-	{
-		text = argv[2];
-		summary = 1;
-	}
-
 	// check stdin
-	if (strcmp(text, "-") == 0) {
+	if (!text) {
+		char buf[BUFSIZ];
+
 		text = malloc(1);
 		if (!text)
 			return -1;
@@ -65,7 +77,6 @@ int main(int argc, char *argv[])
 				k=0, // buflen
 				l=0, // textlen
 				n=0; // number of buffers
-		char buf[BUFSIZ];
 		while ((
 					k=fread(
 						buf, 1, BUFSIZ, stdin)))
