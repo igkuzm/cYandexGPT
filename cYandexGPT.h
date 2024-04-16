@@ -16,7 +16,6 @@ typedef enum {
 	YANDEX_GPT_MODEL_SUMM, // Краткий пересказ 
 	YANDEX_GPT_MODEL_DS,   // Модель, дообученная в Yandex
 												 // DataSphere
-
 } YANDEX_GPT_MODEL;
 
 int c_yandex_gpt(
