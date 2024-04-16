@@ -101,9 +101,9 @@ int main(int argc, char *argv[])
 	else
 		str = c_yandex_gpt_ask_for(text, id, api_key);
 	
-	if (str) {
+	if (str) 
 		printf("%s\n", str);
-	}
+	
 	
 	return 0;
 }

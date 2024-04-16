@@ -5,12 +5,12 @@ SOURCES=cYandexGPT.c cJSON.c yandex_gpt.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=yandex_gpt
 
-all: $(SOURCES) $(EXECUTABLE)
+all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS) $(SOURCES)
+$(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-*.o:
+%.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
