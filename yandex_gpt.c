@@ -10,7 +10,7 @@ static int show_help(char *argv[]){
 				"set C_YANDEX_GPT_ID and C_YNDEX_GPT_API_KEY "
 				"as ENV or in ~/.cYandexGPT.conf\n"
 				"\n"
-				"usage: %s [options] [\"TEXT\"]\n"
+				"usage: %s [options] \"TEXT\"\n"
 				"  -h  --help\tshow this message and exit\n"
 				"  -s  --summary\tsummarize the TEXT\n"
 				"  -a  --append\tappend stdin to TEXT\n"
